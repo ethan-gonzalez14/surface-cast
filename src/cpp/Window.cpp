@@ -7,7 +7,7 @@
     "window" refers to the rectangular portion of the surface that the laser projects to, i.e. the visible 'screen' which may vary in size
 */
 
-#include "include\Window.h"
+#include "Window.h"
 
 int Window::x_res;
 int Window::y_res;
