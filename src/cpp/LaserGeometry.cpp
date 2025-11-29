@@ -3,10 +3,9 @@
     Created by Ethan Gonzalez
     
     LaserGeometry.cpp - Calculates the angle of the laser to produce the desired output
-                      - Returns motor output parameters
+                      - Returns raw angles for driving motors
 */
 
-//#include "Arduino.h"
 #include "include\LaserGeometry.h"
 
 LaserGeometry::LaserGeometry(double WindowLength, double WindowWidth, double LaserHeight, double LaserWidthOffSet, /*double LaserTrackLength,*/ double MaximumHorizontalAngleOfLaser, double MaximumVerticalAngleOfLaser)
@@ -17,15 +16,11 @@ LaserGeometry::LaserGeometry(double WindowLength, double WindowWidth, double Las
 }
 int LaserGeometry::x_current_pixel()
 {
-    //CHECK XRES AND YRES
-    //CHECK TIME
-    //or can check current member variables provided that they update periodically
-    //determines the x-coordinate of the current pixel being displayed
+    return Window::getCurrentPixelX();
 }
 int LaserGeometry::y_current_pixel()
 {
-    //or can check current member variables provided that they update periodically
-    //determines the y-coordinate of the current pixel being displayed
+    return Window::getCurrentPixelY();
 }
 double LaserGeometry::x_current_pixel_coordinate()
 {
@@ -59,3 +54,4 @@ double LaserGeometry::pitch(double xPixel, double yPixel)
     
     return 90.0 + (180.0 * atan(planar_distance / vz) / PI);
 }
+//Create master periodic function that runs 

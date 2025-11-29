@@ -3,7 +3,7 @@
     Created by Ethan Gonzalez
     
     LaserGeometry.h - Calculates the angle of the laser to produce the desired output
-                      - Returns motor output parameters
+                    - Returns raw angles for driving motors
     
     "window" refers to the rectangular portion of the surface that the laser projects to, i.e. the visible 'screen' which may vary in size
 */
@@ -11,10 +11,10 @@
 #define LaserGeometry_h
 
 #include "Constants.h"
+#include "Window.h"
 
 class LaserGeometry
-{
-    
+{  
     public:
         LaserGeometry(double WindowLength, double WindowWidth, double LaserHeight, double LaserWidthOffSet, /*double LaserTrackLength,*/ double MaximumHorizontalAngleOfLaser, double MaximumVerticalAngleOfLaser);
 
@@ -27,9 +27,9 @@ class LaserGeometry
         double horizontal_laser_angle;
         double vertical_laser_angle;
 
-        int x_res;
-        int y_res;
-        
+        int x_res = Window::getWindowXResolution();
+        int y_res = Window::getWindowYResolution();
+
         int x_current_pixel();
         int y_current_pixel();
 
