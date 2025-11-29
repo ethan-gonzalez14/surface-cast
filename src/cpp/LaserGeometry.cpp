@@ -6,7 +6,7 @@
                       - Returns raw angles for driving motors
 */
 
-#include "include\LaserGeometry.h"
+#include "LaserGeometry.h"
 
 LaserGeometry::LaserGeometry(double WindowLength, double WindowWidth, double LaserHeight, double LaserWidthOffSet, /*double LaserTrackLength,*/ double MaximumHorizontalAngleOfLaser, double MaximumVerticalAngleOfLaser)
 {
@@ -34,18 +34,20 @@ double LaserGeometry::y_current_pixel_coordinate()
     double y_pixel_coordinate = y_pixel_spacing * y_current_pixel();
     return y_pixel_coordinate;
 }
-double LaserGeometry::yaw(double xPixel, double yPixel)
+double LaserGeometry::yaw()
 {
-    //remember to pass in x/y_current_pixel_coordinate
+    int xPixel = x_current_pixel_coordinate();
+    int yPixel = y_current_pixel_coordinate();
     double vx = xPixel;
     double vy = yPixel + LASER_Y_OFFSET;
     double vz = -LASER_HEIGHT;
-    
+    Serial.println(180.0 * atan2(vx, vy) / PI);
     return (180.0 * atan2(vx, vy) / PI);
 }
-double LaserGeometry::pitch(double xPixel, double yPixel)
+double LaserGeometry::pitch()
 {
-    //remember to pass in x/y_current_pixel_coordinate
+    int xPixel = x_current_pixel_coordinate();
+    int yPixel = y_current_pixel_coordinate();
     double vx = xPixel;
     double vy = yPixel + LASER_Y_OFFSET;
     double vz = -LASER_HEIGHT;

@@ -36,8 +36,8 @@ class LaserGeometry
         double x_current_pixel_coordinate();
         double y_current_pixel_coordinate();
 
-        double yaw(double xPixel, double yPixel);
-        double pitch(double xPixel, double yPixel);
+        double yaw();
+        double pitch();
         
     private:
 
